@@ -10,18 +10,22 @@ function Tiles:new(data)
         1,
         -self.cells_x,
         self.cells_x,
+        -self.cells_x+1,
+        self.cells_x-1,
+        -self.cells_x-1,
+        self.cells_x+1,
     }
 end
 
 function Tiles:around(x, y)
-    local i = x+y*self.cells_x
+    local i = x+y*self.cells_x+1
     local found = {}
     for _, o in ipairs(self.around_offsets) do
         local j = i+o
         if 1 <= j and j <= #self.tiles then
             if self.tiles[j] ~= -1 then
-                local ax = j%self.cells_x
-                local ay = math.floor(j/self.cells_x)
+                local ax = (j-1)%self.cells_x
+                local ay = math.floor((j-1)/self.cells_x)
                 table.insert(found, {x = ax*TILE_SIZE, y = ay*TILE_SIZE, w = TILE_SIZE, h = TILE_SIZE})     
             end
         end
@@ -32,8 +36,8 @@ end
 function Tiles:draw()
     for i, tile in ipairs(self.tiles) do
         if tile ~= -1 then
-            local x = i%self.cells_x
-            local y = math.floor(i/self.cells_x)
+            local x = (i-1)%self.cells_x
+            local y = math.floor((i-1)/self.cells_x)
             love.graphics.draw(Image[TILE_NAMES[tile+1]], x*TILE_SIZE, y*TILE_SIZE)
         end
     end

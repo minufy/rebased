@@ -17,6 +17,7 @@ TILE_NAMES = {
 
 ENTITIY_NAMES = {
     "player",
+    "cam_zone",
 }
 
 DECAL_NAMES = {
