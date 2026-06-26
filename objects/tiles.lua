@@ -1,4 +1,5 @@
 local Tiles = Object:extend()
+SetType(Tiles, "tiles")
 
 function Tiles:new(data)
     self.tiles = data.data

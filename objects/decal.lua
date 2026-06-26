@@ -1,4 +1,5 @@
 local Decal = Object:extend()
+SetType(Decal, "decal")
 
 function Decal:new(data)
     self.type = data.type

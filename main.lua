@@ -1,5 +1,4 @@
 Object = require("modules.classic")
-Particle = require("objects.particle")
 
 -- load rebase modules
 require("rebase.audio")
@@ -16,8 +15,7 @@ require("rebase.utils")
 
 require("scenes.sm")
 require("settings")
-
-SetType(Particle, "particle")
+Particle = require("objects.particle")
 
 function love.load()
     LogFont = love.graphics.newFont(20)

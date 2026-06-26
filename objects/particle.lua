@@ -1,4 +1,5 @@
 local Particle = Object:extend()
+SetType(Particle, "particle")
 
 function Particle:new(x, y, mx, my, size, color)
     self.x = x

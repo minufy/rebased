@@ -14,3 +14,7 @@ TILE_SIZE = 16
 TILE_NAMES = {
     "tile",
 }
+
+ENTITIY_NAMES = {
+    "player",
+}
