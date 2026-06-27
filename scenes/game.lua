@@ -44,7 +44,7 @@ function Game:draw()
     Color.reset()
     
     Camera:start()
-    Outline:start()
+    -- Outline:start()
     
     for group_name, group in pairs(self.objects) do
         for _, object in ipairs(group) do
@@ -55,7 +55,7 @@ function Game:draw()
     end
 
     Camera:stop()
-    Outline:stop()
+    -- Outline:stop()
 end
 
 return Game
