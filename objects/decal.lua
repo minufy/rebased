@@ -6,8 +6,8 @@ function Decal:new(data)
     self.x = data.x
     self.y = data.y
     self.r = data.rotation
-    self.w = Image[data.type]:getWidth()
-    self.h = Image[data.type]:getHeight()
+    self.w = Image[self.texture]:getWidth()
+    self.h = Image[self.texture]:getHeight()
 end
 
 function Decal:draw()
