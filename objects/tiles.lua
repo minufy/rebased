@@ -28,7 +28,7 @@ function Tiles:around(x, y)
             if self.tiles[j] ~= -1 then
                 local ax = (j-1)%self.cells_x
                 local ay = math.floor((j-1)/self.cells_x)
-                table.insert(found, {x = ax*TILE_SIZE, y = ay*TILE_SIZE, w = TILE_SIZE, h = TILE_SIZE})     
+                table.insert(found, {x = ax*TILE_SIZE, y = ay*TILE_SIZE, w = TILE_SIZE, h = TILE_SIZE})
             end
         end
     end
