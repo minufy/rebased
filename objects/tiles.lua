@@ -8,6 +8,7 @@ function Tiles:new(data)
     self.cells_x = data.gridCellsX
     self.cells_y = data.gridCellsY
     around_offsets = {
+        0,
         -1,
         1,
         -self.cells_x,
