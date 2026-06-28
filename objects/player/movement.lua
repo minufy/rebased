@@ -8,15 +8,12 @@ local max_vy = 6
 local speed_damp = 0.1
 local acc_damp = 0.4
 local dec_damp = 0.25
-local vx_damp = 0.4
-local vx_dec = 0.3
 local falling = 5
 local jump_buffer = 10
 local draw_bounce = 0.2
 
 function Movement:init_movement()
     self.mx = 0
-    self.vx = 0
     self.vy = 0
     self.falling = 999
     self.jump_buffer = 999
@@ -39,7 +36,7 @@ function Movement:init_movement()
 end
 
 function Movement:cb_x(other)
-    Physics.solve_x(self, self.vx+self.mx*self.speed, other)
+    Physics.solve_x(self, self.mx*self.speed, other)
     self.col_x = true
 end
 
@@ -72,7 +69,6 @@ function Movement:update_movement(dt)
     if self.falling < falling and Input.down.down and self.wall_side == 0 then
         self.draw_bounce = -draw_bounce
         ix = 0
-        self.vx = 0
         self.mx = 0
     end
 
@@ -88,13 +84,7 @@ function Movement:update_movement(dt)
         self.mx = self.mx+(ix-self.mx)*acc_damp*dt
     end
 
-    if math.sign(self.vx) == math.sign(self.mx) then
-        self.vx = self.vx-self.vx*vx_damp*dt
-    else
-        self.vx = self.vx-math.sign(self.vx)*vx_dec*dt
-    end
-
-    self.x = self.x+(self.vx+self.mx*self.speed)*dt
+    self.x = self.x+(self.mx*self.speed)*dt
     self.col_x = false
     Physics.col_tiles(self, self.movement_cbs.x)
     

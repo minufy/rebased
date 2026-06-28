@@ -17,7 +17,7 @@ TILE_NAMES = {
     "tile",
 }
 
-ENTITIY_NAMES = {
+ENTITY_NAMES = {
     "player",
     "cam_zone",
 }
