@@ -1,4 +1,4 @@
-# rebin
+# rebased
 love2d 템플릿
 
 # setup
