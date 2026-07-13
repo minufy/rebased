@@ -34,7 +34,7 @@ function love.update(dt)
     SM:update(dt)
     Input:reset_wheel()
     Log:update(dt)
-    Audio:update()
+    UpdateAudio()
 end
 
 local prev = 0
