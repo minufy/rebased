@@ -34,6 +34,8 @@ function Player:update(dt)
 
     -- set camera after collision
     Camera:set(self.cam_x, self.cam_y)
+
+    Game:add(SparkParticle, Res:get_x(), Res:get_y(), math.rad(math.random(1, 360)), math.random(3, 10), math.random(2, 3))
 end
 
 function Player:draw()
