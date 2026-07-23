@@ -26,8 +26,8 @@ function love.load()
     love.graphics.setLineStyle("rough")
     Font = love.graphics.newFont("assets/fonts/Galmuri9.ttf", 10)
 
-    Outline:init(1)
     Res:init()
+    Outline:init(1)
     SM:load("game")
 end
 

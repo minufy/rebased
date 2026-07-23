@@ -44,8 +44,8 @@ function Game:draw()
     love.graphics.rectangle("fill", 0, 0, Res.w, Res.h)
     Color.reset()
     
-    Camera:start()
     Outline:start()
+    Camera:start()
     
     self.tiles.tiles:draw()
     for group_name, group in pairs(self.objects) do
