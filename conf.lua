@@ -1,6 +1,6 @@
 WINDOW_W = 400
 WINDOW_H = 300
-CONSOLE = true
+CONSOLE = os.getenv("CONSOLE") == "true"
 
 function love.conf(t)
     t.window.resizable = true
