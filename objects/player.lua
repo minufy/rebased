@@ -1,8 +1,8 @@
 local Player = Object:extend()
 
-Player:implement(require("objects.player.movement"))
-Player:implement(require("objects.player.draw"))
-Player:implement(require("objects.player.collision"))
+require("objects.player.movement")(Player)
+require("objects.player.draw")(Player)
+require("objects.player.collision")(Player)
 
 NewImage("player")
 

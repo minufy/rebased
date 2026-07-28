@@ -1,6 +1,5 @@
 Game = {}
-local GameBase = require("rebase.game_base")
-GameBase(Game)
+require("rebase.game_base")(Game)
 
 function Game:init()
     self.objects = {}
