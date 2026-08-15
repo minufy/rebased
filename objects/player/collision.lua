@@ -12,6 +12,6 @@ return function (Player)
         end
         self.remove = true
         Camera:shake(3)
-        -- Audio.die:play(1)
+        -- PlayAudio("die")
     end
 end

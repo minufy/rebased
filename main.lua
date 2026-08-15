@@ -40,7 +40,6 @@ function love.update(dt)
     UpdateAudio()
 end
 
-local prev = 0
 function love.draw()
     Res:before()
     SM:draw()
@@ -48,10 +47,6 @@ function love.draw()
     Log:draw()
     if CONSOLE then
         love.graphics.print(tostring(love.timer.getFPS()))
-        local mem = collectgarbage("count")
-        local delta = mem-prev
-        prev = mem
-        love.graphics.print(string.format("Mem: %.1f KB | d %.1f", mem, delta), 0, LogFont:getHeight())
     end
 end
 
