@@ -16,7 +16,6 @@ return function (Player)
         self.vy = 0
         self.falling = 999
         self.jump_buffer = 999
-        self.wall_side = 0
         self.col_x = false
         self.gravity = gravity
         self.speed = speed
@@ -49,7 +48,6 @@ return function (Player)
                 end
                 -- PlayAudio("land")
             end
-            self.wall_side = 0
             self.falling = 0
             self.air_jump = false
         end
@@ -65,7 +63,7 @@ return function (Player)
             ix = ix-1
         end
 
-        if self.falling < falling and Input.down.down and self.wall_side == 0 then
+        if self.falling < falling and Input.down.down then
             self.draw_bounce = -draw_bounce
             ix = 0
             self.mx = 0
