@@ -15,10 +15,6 @@ require("rebase.utils")
 
 require("scenes.sm")
 require("settings")
-Particle = require("objects.particle")
-SparkParticle = require("objects.spark_particle")
-SetType(Particle, "particle")
-SetType(SparkParticle, "particle")
 
 function love.load()
     LogFont = love.graphics.newFont(20)

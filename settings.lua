@@ -20,6 +20,8 @@ TILE_NAMES = {
 ENTITY_NAMES = {
     "player",
     "cam_zone",
+    "particle",
+    "spark_particle",
 }
 
 DECAL_NAMES = {
