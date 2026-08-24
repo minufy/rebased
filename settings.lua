@@ -10,7 +10,7 @@ Input.jump = NewInput({"space", "up", "w", "lshift"})
 
 Camera.x_damp = 0.1
 Camera.y_damp = 0.1
-Camera.shake_damp = 0.2
+Camera.shake_damp = 0.3
 
 TILE_SIZE = 16
 TILE_NAMES = {

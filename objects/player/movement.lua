@@ -117,7 +117,7 @@ return function (Player)
     end
 
     function Player:jump()
-        if self.falling <= falling  then
+        if self.falling <= falling then
             self.vy = -jump_force
             -- PlayAudio("jump")
             self.draw_bounce = draw_bounce
