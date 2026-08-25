@@ -1,5 +1,7 @@
 local bounce_damp = 0.2
 
+local img = NewImage("player")
+
 return function (Player)
     function Player:init_draw()
         self.flip = 1
@@ -26,6 +28,6 @@ return function (Player)
         local sy = (1+self.draw_bounce)
         local ox = self.w*(1-self.flip*sx)/2
         local oy = -self.draw_bounce*self.h
-        love.graphics.draw(Image.player, self.x+ox, self.y+oy, 0, self.flip*sx, sy)
+        love.graphics.draw(img, self.x+ox, self.y+oy, 0, self.flip*sx, sy)
     end
 end

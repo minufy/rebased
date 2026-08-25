@@ -4,8 +4,6 @@ require("objects.player.movement")(Player)
 require("objects.player.draw")(Player)
 require("objects.player.collision")(Player)
 
-NewImage("player")
-
 function Player:new(data)
     self.x = data.x-data.originX
     self.y = data.y-data.originY
