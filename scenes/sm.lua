@@ -24,7 +24,7 @@ function SM:update(dt)
             self.fade_cb = nil
             self.fading_in = false
             self.fading_out = true
-            -- PlayAudio("fade")
+            -- Audio.play("fade")
         end
     end
     if self.fading_out then
@@ -40,12 +40,12 @@ function SM:draw()
     
     if self.fading_in then
         love.graphics.setColor(0, 0, 0)
-        love.graphics.rectangle("fill", Res.w*(EaseOut(self.fade_in/FADE_TIME)-1), 0, Res.w, Res.h)
+        love.graphics.rectangle("fill", Res.w*(Ease.out(self.fade_in/FADE_TIME)-1), 0, Res.w, Res.h)
         Color.reset()
     end
     if self.fading_out then
         love.graphics.setColor(0, 0, 0)
-        love.graphics.rectangle("fill", Res.w*EaseOut(self.fade_out/FADE_TIME), 0, Res.w, Res.h)
+        love.graphics.rectangle("fill", Res.w*Ease.out(self.fade_out/FADE_TIME), 0, Res.w, Res.h)
         Color.reset()
     end
 end
@@ -55,7 +55,7 @@ function SM:reset_fade()
     self.fade_out = 0
     self.fading_in = true
     self.fading_out = false
-    -- PlayAudio("fade")
+    -- Audio.play("fade")
 end
 
 function SM:set_fade(func)

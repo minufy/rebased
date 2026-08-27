@@ -1,6 +1,6 @@
 local bounce_damp = 0.2
 
-local img = NewImage("player")
+local img = Image.new("player")
 
 return function (Player)
     function Player:init_draw()

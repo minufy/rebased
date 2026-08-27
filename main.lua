@@ -33,7 +33,6 @@ function love.update(dt)
     SM:update(dt)
     Input:reset_wheel()
     Log:update(dt)
-    UpdateAudio()
 end
 
 function love.draw()

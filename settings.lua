@@ -1,12 +1,12 @@
-Input.refresh = NewInput({"f5"})
+Input.refresh = Input.new({"f5"})
 
-Input.right = NewInput({"right", "d"})
-Input.left = NewInput({"left", "a"})
+Input.right = Input.new({"right", "d"})
+Input.left = Input.new({"left", "a"})
 -- Input.up = NewInput({"up", "w"})
-Input.down = NewInput({"down", "s"})
-Input.jump = NewInput({"space", "up", "w", "lshift"})
+Input.down = Input.new({"down", "s"})
+Input.jump = Input.new({"space", "up", "w", "lshift"})
 
--- NewAudio("jump", 0.5)
+Audio.new("jump")
 
 Camera.x_damp = 0.1
 Camera.y_damp = 0.1
