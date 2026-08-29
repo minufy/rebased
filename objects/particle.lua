@@ -1,10 +1,12 @@
-local Particle = Object:extend()
+local Particle = {}
+Particle.__index = Particle
 
 local move_damp = 0.1
 local size_damp = 0.07
 local size_thresh = 0.5
 
-function Particle:new(x, y, mx, my, size, color)
+function Particle.new(x, y, mx, my, size, color)
+    local self = setmetatable({}, Particle)
     self.x = x
     self.y = y
     self.w = size
@@ -15,6 +17,7 @@ function Particle:new(x, y, mx, my, size, color)
     
     self.size = size
     self.color = color or {1, 1, 1}
+    return self
 end
 
 function Particle:draw()

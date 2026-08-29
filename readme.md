@@ -9,5 +9,4 @@ or
 # credits
 - [Galmuri](https://quiple.dev/font/galmuri)
 - [lume](https://github.com/rxi/lume)
-- [classic](https://github.com/rxi/classic)
 - [json.lua](https://github.com/rxi/json.lua)

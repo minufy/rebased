@@ -1,9 +1,11 @@
-local Tiles = Object:extend()
+local Tiles = {}
+Tiles.__index = Tiles
 SetType(Tiles, "tiles")
 
 local around_offsets
 
-function Tiles:new(data)
+function Tiles.new(data)
+    local self = setmetatable({}, Tiles)
     self.tiles = data.data
     self.cells_x = data.gridCellsX
     self.cells_y = data.gridCellsY
@@ -18,6 +20,7 @@ function Tiles:new(data)
         -self.cells_x-1,
         self.cells_x+1,
     }
+    return self
 end
 
 function Tiles:around(x, y)

@@ -1,10 +1,13 @@
-local Player = Object:extend()
+local Player = {}
+Player.__index = Player
+Player = setmetatable(Player, {__call = Player.new})
 
 require("objects.player.movement")(Player)
 require("objects.player.draw")(Player)
 require("objects.player.collision")(Player)
 
-function Player:new(data)
+function Player.new(data)
+    local self = setmetatable({}, Player)
     self.x = data.x-data.originX
     self.y = data.y-data.originY
     self.w = Image.player:getWidth()
@@ -19,6 +22,7 @@ function Player:new(data)
     Camera:offset(Res.w/2, Res.h/2)
     Camera:set(self.cam_x, self.cam_y)
     Camera:snap_back()
+    return self
 end
 
 function Player:update(dt)
@@ -33,7 +37,7 @@ function Player:update(dt)
     -- set camera after collision
     Camera:set(self.cam_x, self.cam_y)
 
-    Game:add(ENTITIES.spark_particle, Res:get_x()+Camera.x, Res:get_y()+Camera.y, math.rad(math.random(1, 360)), math.random(3, 10), math.random(2, 3))
+    Game:add(ENTITIES.spark_particle.new(Res:get_x()+Camera.x, Res:get_y()+Camera.y, math.rad(math.random(1, 360)), math.random(3, 10), math.random(2, 3)))
 end
 
 function Player:draw()

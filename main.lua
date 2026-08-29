@@ -1,5 +1,3 @@
-Object = require("modules.classic")
-
 -- load rebase modules
 require("rebase.audio")
 require("rebase.camera")

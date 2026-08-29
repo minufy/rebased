@@ -1,4 +1,5 @@
-local SparkParticle = Object:extend()
+local SparkParticle = {}
+SparkParticle.__index = SparkParticle
 
 local speed_damp = 0.1
 local size_damp = 0.07
@@ -6,7 +7,8 @@ local size_thresh = 0.5
 local front = 2
 local back = 4
 
-function SparkParticle:new(x, y, angle, speed, size, color)
+function SparkParticle.new(x, y, angle, speed, size, color)
+    local self = setmetatable({}, SparkParticle)
     self.x = x
     self.y = y
     self.w = size
@@ -17,6 +19,7 @@ function SparkParticle:new(x, y, angle, speed, size, color)
     self.size = size
 
     self.color = color or {1, 1, 1}
+    return self
 end
 
 function SparkParticle:draw()
