@@ -1,6 +1,5 @@
 local Player = {}
 Player.__index = Player
-Player = setmetatable(Player, {__call = Player.new})
 
 require("objects.player.movement")(Player)
 require("objects.player.draw")(Player)
