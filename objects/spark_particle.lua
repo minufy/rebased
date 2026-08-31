@@ -28,13 +28,12 @@ function SparkParticle:draw()
     local y = math.sin(self.angle)*self.size*self.speed
     local xr = math.cos(self.angle+math.pi/2)*self.size
     local yr = math.sin(self.angle+math.pi/2)*self.size
-    local points = {
+    love.graphics.polygon("fill",
         self.x+x*front, self.y+y*front,
         self.x+xr, self.y+yr,
         self.x-x*back, self.y-y*back,
-        self.x-xr, self.y-yr,
-    }
-    love.graphics.polygon("fill", unpack(points))
+        self.x-xr, self.y-yr
+    )
     Color.reset()
 end
 
