@@ -1,4 +1,4 @@
-local Particle = {}
+Particle = {}
 Particle.__index = Particle
 
 local move_damp = 0.1

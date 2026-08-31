@@ -1,4 +1,4 @@
-local SparkParticle = {}
+SparkParticle = {}
 SparkParticle.__index = SparkParticle
 
 local speed_damp = 0.1

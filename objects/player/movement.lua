@@ -44,7 +44,7 @@ return function (Player)
             if self.falling > falling then
                 self.draw_bounce = -draw_bounce
                 for _ = 0, 4 do
-                    Game:add(ENTITIES.particle.new(self.x+self.w/2, self.y+self.h, math.random(-12, 12), math.random(-5, 0), math.random(2, 4)))
+                    Game:add(Particle.new(self.x+self.w/2, self.y+self.h, math.random(-12, 12), math.random(-5, 0), math.random(2, 4)))
                 end
                 -- Audio.play("land")
             end
@@ -108,7 +108,7 @@ return function (Player)
 
         if ix ~= 0 and self.falling <= falling and self.col_x == false then
             if self.walk_timer:run(dt) then
-                Game:add(ENTITIES.particle.new(self.x+self.w/2, self.y+self.h, ix*math.random(0, 10), math.random(-5, 0), math.random(2, 4)))
+                Game:add(Particle.new(self.x+self.w/2, self.y+self.h, ix*math.random(0, 10), math.random(-5, 0), math.random(2, 4)))
                 -- Audio.play("walk")
             end
         end
@@ -122,7 +122,7 @@ return function (Player)
             self.falling = 999
             self.jump_buffer = 999
             for _ = 0, 4 do
-                Game:add(ENTITIES.particle.new(self.x+self.w/2, self.y+self.h, math.random(-15, 15), math.random(-10, 0), math.random(2, 6)))
+                Game:add(Particle.new(self.x+self.w/2, self.y+self.h, math.random(-15, 15), math.random(-10, 0), math.random(2, 6)))
             end
         end
     end

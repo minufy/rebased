@@ -1,4 +1,4 @@
-local Player = {}
+Player = {}
 Player.__index = Player
 
 require("objects.player.movement")(Player)
@@ -36,7 +36,7 @@ function Player:update(dt)
     -- set camera after collision
     Camera:set(self.cam_x, self.cam_y)
 
-    Game:add(ENTITIES.spark_particle.new(Res:get_x()+Camera.x, Res:get_y()+Camera.y, math.rad(math.random(1, 360)), math.random(3, 10), math.random(2, 3)))
+    Game:add(SparkParticle.new(Res:get_x()+Camera.x, Res:get_y()+Camera.y, math.rad(math.random(1, 360)), math.random(3, 10), math.random(2, 3)))
 end
 
 function Player:draw()

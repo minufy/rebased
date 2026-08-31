@@ -1,4 +1,4 @@
-local Tiles = {}
+Tiles = {}
 Tiles.__index = Tiles
 SetType(Tiles, "tiles")
 

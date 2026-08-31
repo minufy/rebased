@@ -1,4 +1,4 @@
-local Decal = {}
+Decal = {}
 Decal.__index = Decal
 
 function Decal.new(data)

@@ -1,4 +1,4 @@
-local CamZone = {}
+CamZone = {}
 CamZone.__index = CamZone
 
 function CamZone.new(data)
