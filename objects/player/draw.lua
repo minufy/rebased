@@ -5,7 +5,6 @@ local img = Image.new("player")
 return function (Player)
     function Player:init_draw()
         self.flip = 1
-        self.air_jump_radius = 0
     end
 
     function Player:update_draw(dt)

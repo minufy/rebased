@@ -14,7 +14,7 @@ return function (Player)
     end
     
     function Player:update_collision(dt)
-        for i, v in pairs(filters) do
+        for i, _ in pairs(filters) do
             Physics.dist(self, filters[i], self.collision_cbs[i], dists[i])
         end
     end
