@@ -2,7 +2,7 @@ Input.refresh = Input.new({"f5"})
 
 Input.right = Input.new({"right", "d"})
 Input.left = Input.new({"left", "a"})
--- Input.up = NewInput({"up", "w"})
+-- Input.up = Input.new({"up", "w"})
 Input.down = Input.new({"down", "s"})
 Input.jump = Input.new({"space", "up", "w", "lshift"})
 

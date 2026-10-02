@@ -1,9 +1,22 @@
+local filters = {
+    
+}
+
+local dists = {
+    
+}
+
 return function (Player)
     function Player:init_collision()
+        self.collision_cbs = {
+            
+        }
     end
     
     function Player:update_collision(dt)
-        
+        for i, v in pairs(filters) do
+            Physics.dist(self, filters[i], self.collision_cbs[i], dists[i])
+        end
     end
     
     function Player:die()
