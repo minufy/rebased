@@ -31,6 +31,9 @@ function love.update(dt)
     SM:update(dt)
     Input:reset_wheel()
     Log:update(dt)
+    if Input.fullscreen.pressed then
+        Res:toggle_fullscreen()
+    end
 end
 
 function love.draw()

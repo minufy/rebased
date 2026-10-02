@@ -1,4 +1,5 @@
 Input.refresh = Input.new({"f5"})
+Input.fullscreen = Input.new({"f11"})
 
 Input.right = Input.new({"right", "d"})
 Input.left = Input.new({"left", "a"})
