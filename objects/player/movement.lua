@@ -16,7 +16,6 @@ return function (Player)
         self.vy = 0
         self.falling = 999
         self.jump_buffer = 999
-        self.col_x = false
         self.gravity = gravity
         self.speed = speed
 
@@ -35,7 +34,6 @@ return function (Player)
 
     function Player:cb_x(other)
         Physics.solve_x(self, self.mx*self.speed, other)
-        self.col_x = true
     end
 
     function Player:cb_y(other)
@@ -54,7 +52,7 @@ return function (Player)
         self.vy = 0
     end
 
-    function Player:update_movement(dt)
+    function Player:move_x(dt)
         local ix = 0
         if Input.right.down then
             ix = ix+1
@@ -82,15 +80,27 @@ return function (Player)
         end
 
         self.x = self.x+(self.mx*self.speed)*dt
-        self.col_x = false
-        Physics.col_tiles(self, self.movement_cbs.x)
+        local col_x = Game:col_tiles(self, self.movement_cbs.x)
         
+        if col_x then
+            self.mx = 0
+        end
+
+        if ix ~= 0 and self.falling <= falling and col_x == false then
+            if self.walk_timer:run(dt) then
+                Game:add(Particle.new(self.x+self.w/2, self.y+self.h, ix*math.random(0, 10), math.random(-5, 0), math.random(2, 4)))
+                -- Audio.play("walk")
+            end
+        end
+    end
+
+    function Player:move_y(dt)
         self.vy = self.vy+self.gravity*dt
         if self.vy >= max_vy then
             self.vy = max_vy
         end
         self.y = self.y+self.vy*dt
-        Physics.col_tiles(self, self.movement_cbs.y)
+        Game:col_tiles(self, self.movement_cbs.y)
         self.falling = self.falling+dt
         self.jump_buffer = self.jump_buffer+dt
 
@@ -105,13 +115,11 @@ return function (Player)
         else
             self.gravity = gravity
         end
+    end
 
-        if ix ~= 0 and self.falling <= falling and self.col_x == false then
-            if self.walk_timer:run(dt) then
-                Game:add(Particle.new(self.x+self.w/2, self.y+self.h, ix*math.random(0, 10), math.random(-5, 0), math.random(2, 4)))
-                -- Audio.play("walk")
-            end
-        end
+    function Player:update_movement(dt)
+        self:move_x(dt)
+        self:move_y(dt)
     end
 
     function Player:jump()
