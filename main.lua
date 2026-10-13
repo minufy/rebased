@@ -15,6 +15,7 @@ require("scenes.sm")
 
 function love.load()
     require("init")()
+    Log:init()
     Res:init()
     Outline:init(1)
     SM:load("game")
