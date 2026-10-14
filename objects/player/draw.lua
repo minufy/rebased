@@ -1,6 +1,5 @@
 local bounce_damp = 0.2
 
-Image.new("player_idle1")
 Animation.new("player_idle", 1, 2, 40)
 Animation.new("player_walk", 1, 2, 10)
 Animation.new("player_jump", 1, 1, 0)
