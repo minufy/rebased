@@ -8,7 +8,6 @@ Animation.new("player_jump", 1, 1, 0)
 return function (Player)
     function Player:init_draw()
         self.flip = 1
-
         self.anim_state = "idle"
     end
 
