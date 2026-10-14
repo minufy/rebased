@@ -3,7 +3,6 @@ local air_speed = 2.6
 local gravity = 0.45
 local jump_force = 5
 local max_vy = 6
-local speed_damp = 0.1
 local acc_damp = 0.4
 local dec_damp = 0.25
 local falling = 5
@@ -67,19 +66,18 @@ return function (Player)
             self.mx = 0
         end
 
-        local target_speed = speed
+        self.speed = speed
         if self.falling > falling then
-            target_speed = air_speed
+            self.speed = air_speed
         end
-        self.speed = self.speed+(target_speed-self.speed)*speed_damp*dt
 
         if ix == 0 then
-            self.mx = self.mx+(ix-self.mx)*dec_damp*dt
+            self.mx = self.mx+(self.speed*ix-self.mx)*dec_damp*dt
         else
-            self.mx = self.mx+(ix-self.mx)*acc_damp*dt
+            self.mx = self.mx+(self.speed*ix-self.mx)*acc_damp*dt
         end
 
-        self.x = self.x+(self.mx*self.speed)*dt
+        self.x = self.x+self.mx*dt
         local col_x = Game:col_tiles(self, self.movement_cbs.x)
         
         if col_x then
@@ -117,9 +115,20 @@ return function (Player)
         end
     end
 
+    function Player:update_anim_state()
+        if self.falling > falling then
+            self.anim_state = "jump"
+        elseif math.abs(self.mx) > 1 then
+            self.anim_state = "walk"
+        else
+            self.anim_state = "idle"
+        end
+    end
+
     function Player:update_movement(dt)
         self:move_x(dt)
         self:move_y(dt)
+        self:update_anim_state()
     end
 
     function Player:jump()

@@ -1,4 +1,5 @@
 -- load rebase modules
+require("rebase.animation")
 require("rebase.audio")
 require("rebase.camera")
 require("rebase.image")
@@ -17,7 +18,7 @@ function love.load()
     require("init")()
     Log:init()
     Res:init()
-    Outline:init(1)
+    Shadow:init()
     SM:load("game")
 end
 

@@ -9,8 +9,8 @@ function Player.new(data)
     local self = setmetatable({}, Player)
     self.x = data.x-data.originX
     self.y = data.y-data.originY
-    self.w = Image.player:getWidth()
-    self.h = Image.player:getHeight()
+    self.w = Image.player_idle1:getWidth()
+    self.h = Image.player_idle1:getHeight()
 
     self:init_collision()
     self:init_draw()

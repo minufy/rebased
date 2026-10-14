@@ -10,7 +10,7 @@ return function ()
     Input.left = Input.new({"left", "a"})
     -- Input.up = Input.new({"up", "w"})
     Input.down = Input.new({"down", "s"})
-    Input.jump = Input.new({"space", "up", "w", "lshift"})
+    Input.jump = Input.new({"space", "up", "w"})
     
     Audio.new("jump")
     
@@ -24,6 +24,6 @@ return function ()
     }
     
     DECAL_NAMES = {
-        "test",
+        
     }
 end
