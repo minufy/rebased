@@ -8,7 +8,7 @@ local acc_damp = 0.4
 local dec_damp = 0.25
 local falling = 5
 local jump_buffer = 10
-local draw_bounce = 0.2
+local draw_bounce = 0.4
 
 return function (Player)
     function Player:init_movement()
