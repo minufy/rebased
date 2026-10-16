@@ -32,7 +32,7 @@ return function (Player)
     end
 
     function Player:cb_x(other)
-        Physics.solve_x(self, self.mx*self.speed, other)
+        Physics.solve_x(self, self.mx, other)
     end
 
     function Player:cb_y(other)
