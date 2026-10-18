@@ -21,13 +21,13 @@ function Game:draw()
     love.graphics.rectangle("fill", 0, 0, Res.w, Res.h)
     Color.reset()
     
-    Shadow:start()
+    Shaders.shadow:start()
     Camera:start()
 
     self:draw_objects()
 
     Camera:stop()
-    Shadow:stop()
+    Shaders.shadow:stop()
 end
 
 ---@generic T

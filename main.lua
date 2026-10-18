@@ -8,7 +8,7 @@ require("rebase.level")
 require("rebase.log")
 require("rebase.physics")
 require("rebase.res")
-require("rebase.shader")
+require("rebase.shaders")
 require("rebase.timer")
 require("rebase.utils")
 
@@ -18,7 +18,7 @@ function love.load()
     require("init")()
     Log:init()
     Res:init()
-    Shadow:init()
+    Shaders.shadow:init()
     SM:load("game")
 end
 
