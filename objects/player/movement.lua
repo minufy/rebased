@@ -20,22 +20,13 @@ return function (Player)
 
         self.draw_bounce = 0
         self.walk_timer = Timer.new(8)
-
-        self.movement_cbs = {
-            x = function (other)
-                self:cb_x(other)
-            end,
-            y = function (other)
-                self:cb_y(other)
-            end,
-        }
     end
 
-    function Player:cb_x(other)
+    function Player:col_x(other)
         Physics.solve_x(self, self.mx, other)
     end
 
-    function Player:cb_y(other)
+    function Player:col_y(other)
         Physics.solve_y(self, self.vy, other)
         if self.vy > 0 then
             if self.falling > falling then
@@ -78,7 +69,7 @@ return function (Player)
         end
 
         self.x = self.x+self.mx*dt
-        local col_x = Game:col_tiles(self, self.movement_cbs.x)
+        local col_x = Game:col_tiles(self, self.col_x)
         
         if col_x then
             self.mx = 0
@@ -98,7 +89,7 @@ return function (Player)
             self.vy = max_vy
         end
         self.y = self.y+self.vy*dt
-        Game:col_tiles(self, self.movement_cbs.y)
+        Game:col_tiles(self, self.col_y)
         self.falling = self.falling+dt
         self.jump_buffer = self.jump_buffer+dt
 
