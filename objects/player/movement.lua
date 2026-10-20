@@ -37,7 +37,6 @@ return function (Player)
                 -- Audio.play("land")
             end
             self.falling = 0
-            self.air_jump = false
         end
         self.vy = 0
     end
