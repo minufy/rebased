@@ -51,5 +51,4 @@ function Game:reset()
     Level:load_level(tostring(self.current_level), self)
 end
 
-
 return Game
