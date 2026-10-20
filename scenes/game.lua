@@ -24,7 +24,7 @@ function Game:draw()
     love.graphics.setColor(rgb(60, 93, 141))
     love.graphics.rectangle("fill", 0, 0, Res.w, Res.h)
     Color.reset()
-    
+
     Shaders.shadow:start()
     Camera:start()
 

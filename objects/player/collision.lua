@@ -8,13 +8,13 @@ local dists = {
 
 return function (Player)
     function Player:init_collision()
-        
+
     end
-    
+
     function Player:update_collision(dt)
         Game:dist(self, filters.enemy, self.col_enemy, dists.enemy)
     end
-    
+
     function Player:col_enemy(other)
         self:die()
     end

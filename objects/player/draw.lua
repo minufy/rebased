@@ -12,7 +12,7 @@ return function (Player)
 
     function Player:update_draw(dt)
         Animation.update("player_"..self.anim_state, dt)
-        
+
         local flip = 0
         if Input.right.down then
             flip = flip+1
@@ -23,7 +23,7 @@ return function (Player)
         if flip ~= 0 then
             self.flip = flip
         end
-        
+
         self.draw_bounce = self.draw_bounce-self.draw_bounce*bounce_damp*dt
     end
 

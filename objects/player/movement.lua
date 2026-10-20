@@ -70,7 +70,7 @@ return function (Player)
 
         self.x = self.x+self.mx*dt
         local col_x = Game:col_tiles(self, self.col_x)
-        
+
         if col_x then
             self.mx = 0
         end
