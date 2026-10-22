@@ -1,4 +1,5 @@
 {
+    "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
     "workspace.library": [
         "${addons}/love2d/module/library"
     ],
@@ -11,9 +12,6 @@
     "diagnostics.globals": [
         "rgb",
         "rgba"
-    ],
-    "workspace.ignoreDir": [
-        "modules/"
     ],
     "workspace.ignoreSubmodules": false,
     "diagnostics.disable": [
