@@ -5,6 +5,6 @@
     "env": {
         "CONSOLE": "true"
     },
-    "reveal": "never"
+    "reveal": "always"
   }
 ]
