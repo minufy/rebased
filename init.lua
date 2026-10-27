@@ -18,6 +18,10 @@ return function ()
     Camera.y_damp = 0.1
     Camera.shake_damp = 0.3
 
+    COLORS = {
+        bg = "#3C5D8D",
+    }
+
     TILE_SIZE = 16
     TILE_NAMES = {
         "tile",
