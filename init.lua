@@ -19,7 +19,7 @@ return function ()
     Camera.shake_damp = 0.3
 
     COLORS = {
-        bg = "#3C5D8D",
+        bg = Color.hex("#3C5D8D"),
     }
 
     TILE_SIZE = 16

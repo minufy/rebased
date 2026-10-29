@@ -21,7 +21,7 @@ function Game:update(dt)
 end
 
 function Game:draw()
-    love.graphics.setColor(Color.hex(COLORS.bg))
+    love.graphics.setColor(COLORS.bg)
     love.graphics.rectangle("fill", 0, 0, Res.w, Res.h)
     Color.reset()
 
