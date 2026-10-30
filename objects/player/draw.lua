@@ -24,7 +24,7 @@ return function (Player)
             self.flip = flip
         end
 
-        self.draw_bounce = self.draw_bounce-self.draw_bounce*bounce_damp*dt
+        self.draw_bounce = self.draw_bounce-self.draw_bounce*Damp(dt, bounce_damp)
     end
 
     function Player:draw_draw()

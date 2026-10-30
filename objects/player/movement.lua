@@ -62,9 +62,9 @@ return function (Player)
         end
 
         if ix == 0 then
-            self.mx = self.mx+(self.speed*ix-self.mx)*dec_damp*dt
+            self.mx = self.mx+(self.speed*ix-self.mx)*Damp(dt, dec_damp)
         else
-            self.mx = self.mx+(self.speed*ix-self.mx)*acc_damp*dt
+            self.mx = self.mx+(self.speed*ix-self.mx)*Damp(dt, acc_damp)
         end
 
         self.x = self.x+self.mx*dt

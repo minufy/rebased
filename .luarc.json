@@ -9,10 +9,6 @@
     },
     "workspace.checkThirdParty": false,
     "completion.autoRequire": false,
-    "diagnostics.globals": [
-        "rgb",
-        "rgba"
-    ],
     "workspace.ignoreSubmodules": false,
     "diagnostics.disable": [
         "duplicate-set-field"
