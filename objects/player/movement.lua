@@ -6,7 +6,7 @@ local jump_cut = 0.6
 local max_vy = 6
 local acc_damp = 0.4
 local dec_damp = 0.25
-local falling = 5
+local falling = 7
 local jump_buffer = 10
 local draw_bounce = 0.5
 
