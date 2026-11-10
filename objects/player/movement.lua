@@ -62,7 +62,7 @@ return function (Player)
         end
 
         if ix == 0 then
-            self.mx = self.mx+(self.speed*ix-self.mx)*Damp(dt, dec_damp)
+            self.mx = self.mx-self.mx*Damp(dt, dec_damp)
         else
             self.mx = self.mx+(self.speed*ix-self.mx)*Damp(dt, acc_damp)
         end
@@ -97,8 +97,10 @@ return function (Player)
         end
         if self.jump_buffer <= jump_buffer then
             self:jump()
+            if Input.jump.up and self.vy < 0 then
+                self.vy = self.vy*jump_cut
+            end
         end
-
         if Input.jump.released and self.vy < 0 then
             self.vy = self.vy*jump_cut
         end
