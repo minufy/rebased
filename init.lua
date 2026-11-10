@@ -30,4 +30,8 @@ return function ()
     DECAL_NAMES = {
 
     }
+
+    FILTERS = {
+        spike = {"spike"}
+    }
 end
