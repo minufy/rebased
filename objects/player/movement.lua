@@ -97,7 +97,7 @@ return function (Player)
         end
         if self.jump_buffer <= jump_buffer then
             self:jump()
-            if Input.jump.up and self.vy < 0 then
+            if Input.jump.up then
                 self.vy = self.vy*jump_cut
             end
         end
