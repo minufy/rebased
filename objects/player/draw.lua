@@ -1,4 +1,4 @@
-local bounce_damp = 0.2
+local bounce_damp = 0.15
 
 Animation.new("player_idle", 1, 2, 40)
 Animation.new("player_walk", 1, 2, 10)
@@ -28,10 +28,8 @@ return function (Player)
     end
 
     function Player:draw_draw()
-        local sx = (1-self.draw_bounce)
-        local sy = (1+self.draw_bounce)
-        local ox = self.w*(1-self.flip*sx)/2
-        local oy = -self.draw_bounce*self.h
-        love.graphics.draw(Animation.get_frame("player_"..self.anim_state), self.x+ox, self.y+oy, 0, self.flip*sx, sy)
+        local sx = 1-self.draw_bounce
+        local sy = 1+self.draw_bounce
+        love.graphics.draw(Animation.get_frame("player_"..self.anim_state), self.x+self.w/2, self.y+self.h, 0, sx*self.flip, sy, self.w/2, self.h)
     end
 end

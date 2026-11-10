@@ -1,13 +1,14 @@
 local speed = 2.4
 local air_speed = 2.6
-local gravity = 0.45
-local jump_force = 5
+local gravity = 0.3
+local jump_force = 5.5
+local jump_cut = 0.6
 local max_vy = 6
 local acc_damp = 0.4
 local dec_damp = 0.25
 local falling = 5
 local jump_buffer = 10
-local draw_bounce = 0.4
+local draw_bounce = 0.5
 
 return function (Player)
     function Player:init_movement()
@@ -15,7 +16,6 @@ return function (Player)
         self.vy = 0
         self.falling = 999
         self.jump_buffer = 999
-        self.gravity = gravity
         self.speed = speed
 
         self.draw_bounce = 0
@@ -83,7 +83,7 @@ return function (Player)
     end
 
     function Player:move_y(dt)
-        self.vy = self.vy+self.gravity*dt
+        self.vy = self.vy+gravity*dt
         if self.vy >= max_vy then
             self.vy = max_vy
         end
@@ -98,10 +98,9 @@ return function (Player)
         if self.jump_buffer <= jump_buffer then
             self:jump()
         end
-        if Input.jump.down then
-            self.gravity = gravity/2
-        else
-            self.gravity = gravity
+
+        if Input.jump.released and self.vy < 0 then
+            self.vy = self.vy*jump_cut
         end
     end
 
