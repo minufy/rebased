@@ -23,7 +23,6 @@ function love.load()
     require("init")()
     Log:init()
     Res:init()
-    Shaders.shadow:init()
     SM:load("game")
 end
 
