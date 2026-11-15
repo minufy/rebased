@@ -1,22 +1,24 @@
-local filters = {
-    enemy = {"enemy"},
-}
-
 local dists = {
-    enemy = TILE_SIZE*0.5,
+    spike = TILE_SIZE*0.4,
 }
 
 return function (Player)
     function Player:init_collision()
-
     end
 
     function Player:update_collision(dt)
-        Game:dist(self, filters.enemy, self.col_enemy, dists.enemy)
+        Game:dist(self, FILTERS.spike, self.col_spike, dists.spike)
+        if self.y >= Game.void_y then
+            self:die()
+        end
     end
 
-    function Player:col_enemy(other)
+    function Player:col_spike(other)
         self:die()
+    end
+
+    function Player:col_pad(pad)
+        pad:activate()
     end
 
     function Player:die()
@@ -26,5 +28,8 @@ return function (Player)
         self.remove = true
         Camera:shake(3)
         -- Audio.play("die")
+        SM:set_fade(function ()
+            Game:reset()
+        end)
     end
 end

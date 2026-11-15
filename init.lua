@@ -3,6 +3,8 @@ return function ()
     love.graphics.setLineStyle("rough")
     Font = love.graphics.newFont("assets/fonts/Galmuri9.ttf", 10)
 
+    Shaders.shadow:init()
+
     Input.refresh = Input.new({"f5"})
     Input.fullscreen = Input.new({"f11"})
 
@@ -29,5 +31,9 @@ return function ()
 
     DECAL_NAMES = {
 
+    }
+
+    FILTERS = {
+        spike = {"spike"}
     }
 end

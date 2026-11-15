@@ -1,21 +1,21 @@
 local speed = 2.4
 local air_speed = 2.6
-local gravity = 0.45
-local jump_force = 5
+local gravity = 0.3
+local jump_force = 5.5
+local jump_cut = 0.6
 local max_vy = 6
 local acc_damp = 0.4
 local dec_damp = 0.25
-local falling = 5
+local falling = 7
 local jump_buffer = 10
-local draw_bounce = 0.4
+local draw_bounce = 0.5
 
 return function (Player)
     function Player:init_movement()
-        self.mx = 0
+        self.vx = 0
         self.vy = 0
         self.falling = 999
         self.jump_buffer = 999
-        self.gravity = gravity
         self.speed = speed
 
         self.draw_bounce = 0
@@ -23,7 +23,7 @@ return function (Player)
     end
 
     function Player:col_x(other)
-        Physics.solve_x(self, self.mx, other)
+        Physics.solve_x(self, self.vx, other)
     end
 
     function Player:col_y(other)
@@ -53,7 +53,7 @@ return function (Player)
         if self.falling < falling and Input.down.down then
             self.draw_bounce = -draw_bounce
             ix = 0
-            self.mx = 0
+            self.vx = 0
         end
 
         self.speed = speed
@@ -62,16 +62,16 @@ return function (Player)
         end
 
         if ix == 0 then
-            self.mx = self.mx+(self.speed*ix-self.mx)*Damp(dt, dec_damp)
+            self.vx = self.vx-self.vx*Damp(dt, dec_damp)
         else
-            self.mx = self.mx+(self.speed*ix-self.mx)*Damp(dt, acc_damp)
+            self.vx = self.vx+(self.speed*ix-self.vx)*Damp(dt, acc_damp)
         end
 
-        self.x = self.x+self.mx*dt
+        self.x = self.x+self.vx*dt
         local col_x = Game:col_tiles(self, self.col_x)
 
         if col_x then
-            self.mx = 0
+            self.vx = 0
         end
 
         if ix ~= 0 and self.falling <= falling and col_x == false then
@@ -83,7 +83,7 @@ return function (Player)
     end
 
     function Player:move_y(dt)
-        self.vy = self.vy+self.gravity*dt
+        self.vy = self.vy+gravity*dt
         if self.vy >= max_vy then
             self.vy = max_vy
         end
@@ -97,18 +97,19 @@ return function (Player)
         end
         if self.jump_buffer <= jump_buffer then
             self:jump()
+            if Input.jump.up and self.vy < 0 then
+                self.vy = self.vy*jump_cut
+            end
         end
-        if Input.jump.down then
-            self.gravity = gravity/2
-        else
-            self.gravity = gravity
+        if Input.jump.released and self.vy < 0 then
+            self.vy = self.vy*jump_cut
         end
     end
 
     function Player:update_anim_state()
         if self.falling > falling then
             self.anim_state = "jump"
-        elseif math.abs(self.mx) > 1 then
+        elseif math.abs(self.vx) > 1 then
             self.anim_state = "walk"
         else
             self.anim_state = "idle"

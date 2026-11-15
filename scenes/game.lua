@@ -49,6 +49,7 @@ end
 function Game:reset()
     self.objects = {}
     Level:load_level(tostring(self.current_level), self)
+    self.void_y = self.objects.tiles[1].cells_y*TILE_SIZE
 end
 
 return Game
