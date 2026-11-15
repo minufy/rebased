@@ -34,6 +34,6 @@ return function ()
     }
 
     FILTERS = {
-        spike = {"spike"}
+        spike = {"spike"},
     }
 end
