@@ -9,6 +9,8 @@ function Decal.new(data)
     self.r = data.rotation
     self.w = Image[self.texture]:getWidth()
     self.h = Image[self.texture]:getHeight()
+    self.cam_x = self.x-self.w/2
+    self.cam_y = self.y-self.h/2
     return self
 end
 
