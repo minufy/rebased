@@ -1,5 +1,5 @@
 local dists = {
-    spike = TILE_SIZE*0.4,
+    spike = TILE_SIZE*0.5,
 }
 
 return function (Player)
