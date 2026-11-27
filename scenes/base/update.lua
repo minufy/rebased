@@ -15,4 +15,16 @@ return function (Scene)
             end
         end
     end
+
+    ---@generic T
+    ---@param o T
+    ---@return T
+    function Game:add(o)
+        local group_name = tostring(o)
+        if self.objects[group_name] == nil then
+            self.objects[group_name] = {}
+        end
+        table.insert(self.objects[group_name], o)
+        return o
+    end
 end

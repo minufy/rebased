@@ -10,6 +10,12 @@ function Game:init(level)
     self:reset()
 end
 
+function Game:reset()
+    self.objects = {}
+    Level:load_level(tostring(self.current_level), self)
+    self.level_h = self.objects.tiles[1].cells_y*TILE_SIZE
+end
+
 function Game:update(dt)
     if CONSOLE and Input.refresh.pressed then
         Level:refresh()
@@ -32,24 +38,6 @@ function Game:draw()
 
     Camera:stop()
     Shaders.shadow:stop()
-end
-
----@generic T
----@param o T
----@return T
-function Game:add(o)
-    local group_name = tostring(o)
-    if self.objects[group_name] == nil then
-        self.objects[group_name] = {}
-    end
-    table.insert(self.objects[group_name], o)
-    return o
-end
-
-function Game:reset()
-    self.objects = {}
-    Level:load_level(tostring(self.current_level), self)
-    self.void_y = self.objects.tiles[1].cells_y*TILE_SIZE
 end
 
 return Game

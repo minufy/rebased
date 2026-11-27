@@ -8,7 +8,7 @@ return function (Player)
 
     function Player:update_collision(dt)
         Game:dist(self, FILTERS.spike, self.col_spike, dists.spike)
-        if self.y >= Game.void_y then
+        if self.y >= Game.level_h then
             self:die()
         end
     end
