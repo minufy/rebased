@@ -28,8 +28,10 @@ return function (Player)
         self.remove = true
         Camera:shake(3)
         -- Audio.play("die")
-        SM:set_fade(function ()
-            Game:reset()
+        Game:after(15, function ()
+            SM:set_fade(function ()
+                Game:reset()
+            end)
         end)
     end
 end

@@ -8,6 +8,7 @@ function Game:init(level)
     self.current_level = level or 1
     Level:init()
     self:reset()
+    Timer(self)
 end
 
 function Game:reset()
@@ -23,6 +24,7 @@ function Game:update(dt)
     end
 
     Camera:update(dt)
+    self:update_timers(dt)
     self:update_objects(dt)
 end
 

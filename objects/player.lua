@@ -16,6 +16,8 @@ function Player.new(data)
     self:init_draw()
     self:init_movement()
 
+    Timer(self)
+
     self.cam_x = self.x+self.w/2
     self.cam_y = self.y+self.h/2
     Camera:offset(Res.w/2, Res.h/2)
@@ -29,6 +31,7 @@ function Player:update(dt)
     self.cam_x = self.x+self.w/2
     self.cam_y = self.y+self.h/2
 
+    self:update_timers(dt)
     self:update_collision(dt)
     self:update_draw(dt)
     self:update_movement(dt)

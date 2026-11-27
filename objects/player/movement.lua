@@ -9,6 +9,7 @@ local dec_damp = 0.25
 local falling = 7
 local jump_buffer = 10
 local draw_bounce = 0.5
+local walk_particle_time = 8
 
 return function (Player)
     function Player:init_movement()
@@ -19,7 +20,6 @@ return function (Player)
         self.speed = speed
 
         self.draw_bounce = 0
-        self.walk_timer = Timer.new(8)
     end
 
     function Player:col_x(other)
@@ -75,7 +75,7 @@ return function (Player)
         end
 
         if ix ~= 0 and self.falling <= falling and col_x == false then
-            if self.walk_timer:run(dt) then
+            if self:every(walk_particle_time) then
                 Game:add(Particle.new(self.x+self.w/2, self.y+self.h, ix*math.random(0, 10), math.random(-5, 0), math.random(2, 4)))
                 -- Audio.play("walk")
             end
