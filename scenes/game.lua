@@ -8,10 +8,10 @@ function Game:init(level)
     self.current_level = level or 1
     Level:init()
     self:reset()
-    Timer(self)
 end
 
 function Game:reset()
+    Timer(self)
     self.objects = {}
     Level:load_level(tostring(self.current_level), self)
     self.level_h = self.objects.tiles[1].cells_y*TILE_SIZE
